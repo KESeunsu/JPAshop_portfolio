@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/body :: body" />
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+                <th>가격</th>
+                <th>재고 수량</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="form : ${forms}">
+                <td th:text="${form.id}"></td>
+                <td th:text="${form.name}"></td>
+                <td th:text="${form.price}"></td>
+                <td th:text="${form.stockQuantity}"></td>
+                <td>
+                    <a href="#" th:href="@{items/{id}/edit (id=${form.id})}"
+                       class="btn btn-primary" role="button">
+                        수정
+                    </a>
+                </td>
+            </tr> </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
